@@ -30,6 +30,7 @@ public class Registre<T extends Identifiable> {
        return null;
     }
     public int taille(){
-        return elements.length;
+
+        return taille;
     }
 }
