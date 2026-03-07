@@ -6,7 +6,7 @@ public class Registre<T extends Identifiable> {
 
     public Registre(T[] elements, int taille) {
         this.elements = elements;
-        this.taille = taille;
+        this.taille = 0;
     }
     public void ajouter(T e){
         if(e==null){
@@ -17,8 +17,14 @@ public class Registre<T extends Identifiable> {
                 throw new IllegalArgumentException("Doublons inexpectable!");
             }
         }
+        if (taille >= elements.length) {
+            throw new IllegalStateException("On peut pas ajouter c'est plein!");
+        }
+        elements[taille++] = e;
     }
+
     public T chercherParId(String id){
+
         if(id==null){
             throw new IllegalArgumentException("L'id ne doit pas être vide");
         }
@@ -30,7 +36,6 @@ public class Registre<T extends Identifiable> {
        return null;
     }
     public int taille(){
-
         return taille;
     }
 }
